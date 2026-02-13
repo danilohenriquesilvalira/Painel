@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-edp-neutral-white-wash text-edp-marine font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+  
+  /* Remove focus outline e adiciona ring personalizado */
+  button:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    @apply outline-none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer components {
+  /* Estados de conexão */
+  .status-connected {
+    @apply text-edp-electric;
+  }
+  
+  .status-disconnected {
+    @apply text-edp-semantic-red;
+  }
+  
+  .status-warning {
+    @apply text-edp-semantic-yellow;
+  }
+  
+  /* Cards EDP */
+  .card-edp {
+    @apply bg-white border border-edp-neutral-lighter rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  /* Inputs EDP */
+  .input-edp {
+    @apply w-full px-3 py-2 text-sm border border-edp-neutral-lighter rounded-md
+           focus:outline-none focus:ring-2 focus:ring-edp-marine focus:border-transparent
+           disabled:bg-edp-neutral-white-wash disabled:cursor-not-allowed
+           placeholder-edp-neutral-medium;
+  }
+  
+  .input-edp-error {
+    @apply border-edp-semantic-red;
+  }
+  
+  /* Botões EDP */
+  .btn-edp-primary {
+    @apply bg-edp-marine text-white hover:bg-edp-marine-100 
+           focus:ring-2 focus:ring-edp-marine focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           font-medium transition-colors duration-200;
+  }
+  
+  .btn-edp-secondary {
+    @apply bg-edp-neutral-lightest text-edp-marine border border-edp-neutral-lighter
+           hover:bg-edp-neutral-white-tint focus:ring-2 focus:ring-edp-neutral-medium focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           font-medium transition-colors duration-200;
+  }
+  
+  /* Typography */
+  .text-metric {
+    @apply font-tech font-semibold;
+  }
+  
+  .text-label {
+    @apply text-sm font-medium text-edp-neutral-darker;
+  }
+  
+  .text-caption {
+    @apply text-xs text-edp-neutral-medium;
+  }
+  
+  /* EDP WCAG AA Compliance - Contraste de Texto */
+  
+  /* Headline/Titles (3:1 minimum) */
+  .text-headline-on-marine {
+    @apply text-white; /* Contraste com Marine Blue: 14.42:1 ✅ */
+  }
+  
+  .text-headline-on-electric {
+    @apply text-edp-marine; /* Contraste com Electric Green: 7.43:1 ✅ */
+  }
+  
+  /* Body Text (4.5:1 minimum) */
+  .text-body-on-marine {
+    @apply text-white; /* Contraste com Marine Blue: 14.42:1 ✅ */
+  }
+  
+  .text-body-on-light {
+    @apply text-edp-marine; /* Contraste com fundo claro: >10:1 ✅ */
+  }
+  
+  /* Tabular Figures - Algarismos Tabulares */
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+/* Animações personalizadas */
+@keyframes pulse-connection {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* EDP Motion Design - Animações Suaves e Naturais */
+@keyframes edp-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes edp-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(40, 255, 82, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(40, 255, 82, 0.6);
+  }
+}
+
+@keyframes edp-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-edp-rotate {
+  animation: edp-rotate 2s linear infinite;
+}
+
+.animate-edp-glow {
+  animation: edp-glow 2s ease-in-out infinite;
+}
+
+.animate-edp-slide-in {
+  animation: edp-slide-in 0.3s ease-out;
+}
+
+/* Transições suaves e naturais (timing da EDP) */
+.transition-edp {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-edp-fast {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-pulse-connection {
+  animation: pulse-connection 2s ease-in-out infinite;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-edp-neutral-white-tint;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-edp-neutral-light rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-edp-neutral-medium;
+}
+
+/* ========================================
+   HEROUI - Forçar fonte Mulish em TUDO
+   ======================================== */
+[data-heroui],
+[class*="heroui"],
+[class*="nextui"],
+.heroui-button,
+.heroui-input,
+.heroui-select,
+.heroui-chip,
+.heroui-card,
+.heroui-modal,
+.heroui-popover,
+.heroui-tooltip,
+[data-slot] {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* Override global para garantir Mulish */
+*, *::before, *::after {
+  font-family: inherit;
+}
+
+/* HeroUI Card - Estilo EDP limpo */
+[data-slot="base"].rounded-large {
+  border-radius: 0.5rem !important;
+}
+
+/* HeroUI Button - Border radius EDP */
+button[class*="heroui"],
+[data-slot="trigger"] {
+  border-radius: 0.5rem !important;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* HeroUI Input/Select - Estilo EDP */
+[data-slot="input-wrapper"],
+[data-slot="trigger"],
+[data-slot="innerWrapper"] {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* HeroUI Chip - Estilo EDP */
+[data-slot="content"] {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* HeroUI Modal overlay */
+[data-slot="backdrop"] {
+  backdrop-filter: blur(4px);
+}
+
+/* HeroUI Pagination cursor */
+[data-slot="cursor"] {
+  border-radius: 0.375rem !important;
+}

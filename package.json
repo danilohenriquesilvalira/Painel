@@ -1,0 +1,11 @@
+{
+    "name": "rls-industrial-monorepo",
+    "private": true,
+    "scripts": {
+        "dev": "cd frontend && npm run dev",
+        "start": "cd frontend && npm run start",
+        "build": "cd frontend && npm run build",
+        "build:backend": "cd backend && cargo build --release",
+        "backend": "cd frontend && npm run backend"
+    }
+}

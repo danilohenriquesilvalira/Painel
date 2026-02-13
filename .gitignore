@@ -1,0 +1,14 @@
+# Monorepo ignores
+node_modules/
+dist/
+target/
+.claude/
+.vscode/
+teste/
+Novo(a)/
+*.lock
+
+# Folder specific
+frontend/node_modules/
+frontend/dist/
+backend/target/
